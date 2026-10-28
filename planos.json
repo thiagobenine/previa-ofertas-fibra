@@ -1,0 +1,172 @@
+{
+  "site": {
+    "operadora": "Brisanet",
+    "whatsapp": "",
+    "consultor": "Bruno",
+    "atualizado_em": "2026-10-27"
+  },
+  "residencial": [
+    {
+      "nome": "Internet 350 Mega",
+      "velocidade": "350 Mega",
+      "preco": "79,99",
+      "observacao": "Valor fixo durante 3 meses",
+      "destaque": true,
+      "itens": [
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 350 Mbps e upload 175 Mbps",
+        "Atendimento técnico rápido",
+        "Jogos online e streaming em 4K"
+      ]
+    },
+    {
+      "nome": "Internet 500 Mega",
+      "velocidade": "500 Mega",
+      "preco": "84,99",
+      "observacao": "",
+      "destaque": false,
+      "itens": [
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 500 Mbps e upload 250 Mbps",
+        "Atendimento técnico rápido",
+        "Estável com vários aparelhos conectados"
+      ]
+    },
+    {
+      "nome": "Internet 700 Mega",
+      "velocidade": "700 Mega",
+      "preco": "99,99",
+      "observacao": "Valor fixo por 12 meses",
+      "destaque": false,
+      "itens": [
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Super Oferta Brisanet",
+        "Wi-Fi de alta performance",
+        "Download 700 Mbps e upload 350 Mbps",
+        "Estável com vários aparelhos conectados"
+      ]
+    },
+    {
+      "nome": "Internet 1 Giga",
+      "velocidade": "1 Giga",
+      "preco": "149,99",
+      "observacao": "",
+      "destaque": false,
+      "itens": [
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 1 Gbps e upload 500 Mbps",
+        "Atendimento técnico rápido",
+        "Estável com vários aparelhos conectados"
+      ]
+    }
+  ],
+  "combos": [
+    {
+      "nome": "500 Mega + Móvel 5G",
+      "velocidade": "500 Mega",
+      "preco": "89,90",
+      "observacao": "Chip 5G no plano individual",
+      "destaque": true,
+      "itens": [
+        "20 GB de internet móvel 5G",
+        "Ligações e SMS ilimitados",
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Download 500 Mbps e upload 250 Mbps"
+      ]
+    },
+    {
+      "nome": "700 Mega + Móvel 5G",
+      "velocidade": "700 Mega",
+      "preco": "99,90",
+      "observacao": "Chip 5G no plano individual",
+      "destaque": false,
+      "itens": [
+        "20 GB de internet móvel 5G",
+        "Ligações e SMS ilimitados",
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Download 700 Mbps e upload 350 Mbps"
+      ]
+    },
+    {
+      "nome": "500 Mega + Netflix",
+      "velocidade": "500 Mega",
+      "preco": "105,90",
+      "observacao": "Netflix padrão com anúncios",
+      "destaque": false,
+      "itens": [
+        "Netflix incluída",
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 500 Mbps e upload 250 Mbps"
+      ]
+    }
+  ],
+  "empresarial": [
+    {
+      "nome": "Empresa 350 Mega",
+      "velocidade": "350 Mega",
+      "preco": "89,99",
+      "observacao": "",
+      "destaque": false,
+      "itens": [
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 350 Mbps e upload 175 Mbps",
+        "Atendimento técnico rápido"
+      ]
+    },
+    {
+      "nome": "Empresa 500 Mega + BrisaFixo",
+      "velocidade": "500 Mega",
+      "preco": "99,99",
+      "observacao": "Com telefone fixo para a empresa",
+      "destaque": true,
+      "itens": [
+        "Telefone fixo para a sua empresa",
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Download 500 Mbps e upload 250 Mbps",
+        "Atendimento técnico rápido"
+      ]
+    },
+    {
+      "nome": "Empresa 1 Giga",
+      "velocidade": "1 Giga",
+      "preco": "159,99",
+      "observacao": "",
+      "destaque": false,
+      "itens": [
+        "Instalação inclusa",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 1 Gbps e upload 500 Mbps",
+        "Atendimento técnico rápido"
+      ]
+    }
+  ],
+  "celular": [
+    {
+      "nome": "Brisa Chip 5G",
+      "velocidade": "100 GB",
+      "preco": "49,99",
+      "observacao": "Internet no celular",
+      "destaque": false,
+      "itens": [
+        "100 GB de internet no celular",
+        "Chip 5G Brisanet",
+        "Atendimento personalizado"
+      ]
+    }
+  ]
+}

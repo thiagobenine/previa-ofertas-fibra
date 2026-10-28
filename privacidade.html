@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Política de privacidade e LGPD | Ofertas Brisanet</title>
+<meta name="description" content="Como os dados do cadastro do site de ofertas Brisanet são usados e protegidos, conforme a LGPD.">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/estilo.css?v=1">
+<style>
+  body{padding-bottom:0}
+  .texto{max-width:760px;margin:0 auto;padding:40px 16px 64px}
+  .texto h1{font-size:clamp(1.9rem,1.4rem + 2vw,2.6rem);font-weight:800;font-stretch:78%;margin-bottom:8px}
+  .texto h2{font-size:1.3rem;font-weight:800;font-stretch:85%;margin:30px 0 8px}
+  .texto p,.texto li{color:var(--suave);max-width:68ch}
+  .texto p+p{margin-top:10px}
+  .texto ul{padding-left:20px;margin:8px 0 0}
+  .texto li+li{margin-top:6px}
+  .data{font-size:.9rem}
+  .voltar{display:inline-block;margin-top:34px;font-weight:700}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="topo-in">
+    <a class="marca" href="./" aria-label="Voltar para as ofertas">
+      <img src="assets/img/brisanet.svg" alt="Brisanet" width="132" height="24">
+      <span class="selo-revenda">Revendedor autorizado</span>
+    </a>
+  </div>
+</header>
+<main class="texto">
+  <h1>Política de privacidade e LGPD</h1>
+  <p class="data">Atualizada em outubro de 2026.</p>
+
+  <h2>Quem somos</h2>
+  <p>Este site é de um revendedor autorizado <span class="js-operadora">Brisanet</span>. Ele não é o site oficial da operadora. Nosso trabalho é apresentar as ofertas, tirar dúvidas e encaminhar a contratação para você.</p>
+
+  <h2>Quais dados pedimos</h2>
+  <p>No cadastro pedimos só o necessário para falar com você e verificar a cobertura:</p>
+  <ul>
+    <li>nome;</li>
+    <li>telefone com WhatsApp;</li>
+    <li>endereço da instalação (CEP, rua, número, complemento, bairro, cidade e estado);</li>
+    <li>plano escolhido.</li>
+  </ul>
+  <p>Não pedimos cartão, PIX, CPF nem senha neste site. Para proteger o formulário contra robôs, guardamos também a data do envio, o tipo de navegador e um código derivado do endereço de internet (IP) que não permite identificar você.</p>
+
+  <h2>Para que usamos</h2>
+  <ul>
+    <li>entrar em contato pelo WhatsApp ou telefone sobre a oferta escolhida;</li>
+    <li>verificar se há cobertura no endereço e agendar a instalação;</li>
+    <li>encaminhar os dados à operadora quando você decidir contratar.</li>
+  </ul>
+  <p>A base legal é o seu consentimento, dado ao marcar a caixa do formulário, e os procedimentos preliminares de um contrato que você pediu (art. 7º, I e V, da LGPD).</p>
+
+  <h2>Com quem compartilhamos</h2>
+  <p>Os dados ficam com o revendedor e só são repassados à operadora para fazer a contratação que você pediu. Não vendemos nem cedemos seus dados para terceiros.</p>
+
+  <h2>Por quanto tempo guardamos</h2>
+  <p>Guardamos o cadastro pelo tempo necessário para o atendimento e a contratação, e no máximo por 12 meses depois do último contato, a não ser que a lei exija mais tempo. Depois disso, os dados são apagados.</p>
+
+  <h2>Cookies e medição de anúncios</h2>
+  <p>O site usa a ferramenta de medição do Google Ads para saber se os anúncios trouxeram visitas e cadastros. Ela pode gravar cookies no seu navegador. Você pode bloquear ou apagar esses cookies nas configurações do navegador sem prejuízo para o uso da página.</p>
+
+  <h2>Seus direitos</h2>
+  <p>Pela LGPD você pode pedir a qualquer momento para confirmar se temos seus dados, ver uma cópia, corrigir, apagar ou retirar o consentimento. Basta pedir pelo <a class="js-wa" data-msg="Olá! Quero fazer um pedido sobre os meus dados (LGPD)." href="./#cadastro">WhatsApp do atendimento</a>. Respondemos em até 15 dias.</p>
+
+  <h2>Segurança</h2>
+  <p>O site usa conexão criptografada (https), e a lista de cadastros fica protegida por senha, acessível apenas ao revendedor.</p>
+
+  <a class="voltar" href="./">Voltar para as ofertas</a>
+</main>
+<footer class="rodape">
+  <div class="rodape-in">
+    <p class="revenda"><b>Revendedor autorizado <span class="js-operadora">Brisanet</span></b></p>
+  </div>
+</footer>
+<script>
+(() => {
+  const DEMO = /\.github\.io$/.test(location.hostname) || location.protocol === 'file:';
+  fetch('planos.json', { cache: 'no-cache' }).then((r) => r.json()).then((d) => {
+    const s = d.site || {};
+    if (s.operadora) document.querySelectorAll('.js-operadora').forEach((el) => { el.textContent = s.operadora; });
+    const n = DEMO ? '' : String(s.whatsapp || '').replace(/\D/g, '');
+    document.querySelectorAll('.js-wa').forEach((a) => {
+      const t = encodeURIComponent(a.dataset.msg || '');
+      a.href = n ? `https://wa.me/${n}?text=${t}` : `https://wa.me/?text=${t}`;
+      a.target = '_blank'; a.rel = 'noopener';
+    });
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>
