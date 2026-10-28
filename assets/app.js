@@ -17,6 +17,8 @@
   let planoHero = null;
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // "R$" nunca fica sozinho no fim da linha
+  const juntaRs = (s) => String(s ?? '').replace(/R\$ (?=\d)/g, 'R$\u00a0');
 
   function partesPreco(p) {
     const s = String(p ?? '').replace(/R\$\s*/i, '').trim();
@@ -34,6 +36,10 @@
     return { n: m[1], u, mbps };
   }
 
+  const valor = (s) => parseFloat(String(s ?? '').replace(/R\$\s*/i, '').replace(/\./g, '').replace(',', '.')) || 0;
+  const temDe = (p) => p.preco_de && valor(p.preco_de) > valor(p.preco);
+  const deHtml = (p) => `De <s>R$&nbsp;${esc(p.preco_de)}</s> por`;
+
   const textoPlano = (p) => `${p.nome} (R$ ${p.preco} por mês)`;
   const msgPlano = (p) => `Olá! Vim pelo site de ofertas e quero contratar o plano ${p.nome} de R$ ${p.preco} por mês. Pode me ajudar?`;
 
@@ -49,6 +55,50 @@
     a.rel = 'noopener';
   }
 
+  // ---------------------------------------------------------------- produtos inclusos (apps)
+  let catalogo = {};
+  const appsDo = (p) => (Array.isArray(p.apps) ? p.apps : []).map((id) => catalogo[id] && { id, ...catalogo[id] }).filter(Boolean);
+  const MAX_ICONES = 5;
+
+  // Linha "Produtos inclusos" com os ícones; o botão inteiro abre a janela com a lista.
+  function blocoApps(p) {
+    const lista = appsDo(p);
+    if (!lista.length) return null;
+    const div = document.createElement('div');
+    div.className = 'apps';
+    const resto = lista.length - MAX_ICONES;
+    div.innerHTML = `
+      <p class="apps-tit">Produtos inclusos</p>
+      <button type="button" class="apps-btn" aria-haspopup="dialog" aria-label="Produtos inclusos no plano ${esc(p.nome)}: ${esc(lista.map((a) => a.nome).join(', '))}. Ver detalhes">
+        ${lista.slice(0, resto > 0 ? MAX_ICONES - 1 : MAX_ICONES).map((a) => `<img src="${esc(a.icone)}" alt="" width="30" height="30" loading="lazy" decoding="async">`).join('')}
+        <span class="apps-mais" aria-hidden="true">${resto > 0 ? '+' + (resto + 1) : '+'}</span>
+      </button>`;
+    const b = $('.apps-btn', div);
+    b.addEventListener('click', () => abreApps(p, b));
+    return div;
+  }
+
+  let origemModal = null;
+  function abreApps(p, origem) {
+    const dlg = $('#modal-apps');
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    $('#modal-apps-plano').textContent = p.nome;
+    $('#modal-apps-lista').innerHTML = appsDo(p).map((a) => `
+      <li><img src="${esc(a.icone)}" alt="" width="44" height="44"><div><b>${esc(a.nome)}</b>${a.texto ? `<p>${esc(a.texto)}</p>` : ''}</div></li>`).join('');
+    origemModal = origem;
+    dlg.showModal();
+    $('.modal-corpo', dlg).scrollTop = 0;
+    $('.modal-fechar', dlg).focus();
+  }
+
+  function preparaModal() {
+    const dlg = $('#modal-apps');
+    if (!dlg) return;
+    $('.modal-fechar', dlg).addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => { if (origemModal && document.contains(origemModal)) origemModal.focus(); origemModal = null; });
+  }
+
   // ---------------------------------------------------------------- cartões de plano
   function cartao(p) {
     const v = partesVelocidade(p.velocidade);
@@ -61,8 +111,10 @@
       ${p.destaque ? '<p class="selo">Mais escolhido</p>' : ''}
       <h3 class="plano-tit"><span class="n">${esc(v.n)}</span> <span class="u">${esc(v.u)}</span>${extra ? ` <span class="extra">${esc(extra)}</span>` : ''}</h3>
       ${pct ? `<div class="barra-vel" role="img" aria-label="Velocidade de ${esc(p.velocidade)}"><span style="--p:${pct.toFixed(3)}"></span></div>` : ''}
-      <p class="preco"><span class="rs">R$</span><span class="int">${esc(int)}</span><span class="cent">${esc(cent)}</span><span class="mes">por mês</span></p>
-      ${p.observacao ? `<p class="plano-obs">${esc(p.observacao)}</p>` : ''}
+      ${temDe(p) ? `<p class="preco-de">${deHtml(p)}</p>` : ''}
+      <p class="preco${temDe(p) ? ' com-de' : ''}"><span class="rs">R$</span><span class="int">${esc(int)}</span><span class="cent">${esc(cent)}</span><span class="mes">por mês</span></p>
+      ${p.observacao ? `<p class="plano-obs">${esc(juntaRs(p.observacao))}</p>` : ''}
+      <div class="js-apps"></div>
       <ul class="itens">${(p.itens || []).map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
       <div class="plano-acoes">
         <a class="btn btn-principal js-quero" href="#cadastro">Quero este plano</a>
@@ -70,6 +122,8 @@
       </div>`;
     $('.js-quero', el).dataset.plano = textoPlano(p);
     ligaWa($('.btn-wa', el), msgPlano(p));
+    const ap = blocoApps(p);
+    if (ap) $('.js-apps', el).replaceWith(ap); else $('.js-apps', el).remove();
     return el;
   }
 
@@ -87,6 +141,7 @@
   function montaSeletor(lista) {
     const sel = $('#seletor');
     if (!lista.length) { $('.hero-texto .hero-sub').hidden = true; sel.hidden = true; return; }
+    sel.style.setProperty('--n', String(Math.min(lista.length, 6)));
     sel.replaceChildren(...lista.map((p, i) => {
       const v = partesVelocidade(p.velocidade);
       const b = document.createElement('button');
@@ -125,9 +180,13 @@
     $('#hero-uni').textContent = v.u;
     $('#oferta-nome').textContent = p.nome;
     $('#oferta-selo').hidden = !p.destaque;
+    $('#oferta-de').innerHTML = temDe(p) ? deHtml(p) : '';
+    $('#oferta-de').hidden = !temDe(p);
     $('#oferta-int').textContent = int;
     $('#oferta-cent').textContent = cent;
-    $('#oferta-obs').textContent = p.observacao || '';
+    $('#oferta-obs').textContent = juntaRs(p.observacao);
+    const ap = blocoApps(p);
+    $('#oferta-apps').replaceChildren(...(ap ? [ap] : []));
     $('#oferta-itens').innerHTML = (p.itens || []).slice(0, 4).map((t) => `<li>${esc(t)}</li>`).join('');
     $('#oferta-itens').className = 'itens';
     $('#oferta-quero').dataset.plano = textoPlano(p);
@@ -149,9 +208,13 @@
     const [int, cent] = partesPreco(p.preco);
     $('#chip-titulo').textContent = p.nome;
     $('#chip-gb').textContent = p.velocidade;
+    $('#chip-de').innerHTML = temDe(p) ? deHtml(p) : '';
+    $('#chip-de').hidden = !temDe(p);
     $('#chip-int').textContent = int;
     $('#chip-cent').textContent = cent;
-    $('#chip-obs').textContent = p.observacao && !/internet no celular/i.test(p.observacao) ? p.observacao : '';
+    $('#chip-obs').textContent = p.observacao && !/internet no celular/i.test(p.observacao) ? juntaRs(p.observacao) : '';
+    const ap = blocoApps(p);
+    $('#chip-apps').replaceChildren(...(ap ? [ap] : []));
     $('#chip-quero').dataset.plano = textoPlano(p);
     ligaWa($('#chip-wa'), msgPlano(p));
   }
@@ -400,6 +463,14 @@
     $$('.js-wa').forEach((a) => ligaWa(a, a.dataset.msg || MSG_PADRAO));
   }
 
+  // Na prévia, avisa que os preços vieram do site oficial e precisam ser confirmados.
+  function avisoPrevia(site) {
+    const av = $('#aviso-precos');
+    if (!av) return;
+    av.hidden = !(DEMO && site.precos_origem);
+    if (!av.hidden) $('#aviso-precos-txt').textContent = `Prévia para conferência: planos e preços copiados do ${site.precos_origem}. Confirme os valores que você vende.`;
+  }
+
   async function inicia() {
     let dados;
     try {
@@ -410,7 +481,9 @@
       $('#planos .cabeca p').textContent = 'Não foi possível carregar os preços agora. Chame no WhatsApp para saber as ofertas do dia.';
     }
     window.__planos = dados;
+    catalogo = dados.apps && typeof dados.apps === 'object' ? dados.apps : {};
     aplicaSite(dados.site || {});
+    avisoPrevia(dados.site || {});
     montaGrades(dados);
     montaSeletor(dados.residencial || []);
     montaChip(dados.celular || []);
@@ -420,6 +493,7 @@
   }
 
   if (DEMO) html.classList.add('demo');
+  preparaModal();
   aplicaSite({});
   barraFixa();
   montaCidades();

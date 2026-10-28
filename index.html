@@ -17,10 +17,11 @@
 <link rel="icon" href="favicon.ico">
 <link rel="preload" href="assets/fontes/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="planos.json" as="fetch" crossorigin>
-<link rel="stylesheet" href="assets/estilo.css?v=1">
+<link rel="stylesheet" href="assets/estilo.css?v=2">
 </head>
 <body>
 <a class="pular" href="#planos">Pular para os planos</a>
+<div class="aviso-previa" id="aviso-precos" hidden><p id="aviso-precos-txt"></p></div>
 
 <header class="topo">
   <div class="topo-in">
@@ -49,7 +50,7 @@
         <p class="hero-sub">Escolha a velocidade e veja o preço do mês:</p>
         <div class="seletor" role="radiogroup" aria-label="Velocidade do plano" id="seletor"></div>
         <div class="velocimetro" aria-live="polite">
-          <p class="numero"><span id="hero-num">350</span><span class="unidade" id="hero-uni">Mega</span></p>
+          <p class="numero"><span id="hero-num">800</span><span class="unidade" id="hero-uni">Mega</span></p>
           <svg class="fibra" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true">
             <path class="base" pathLength="100" d="M0 30 C 120 30, 160 8, 300 8 S 480 30, 600 22"/>
             <path class="pulso" pathLength="100" d="M0 30 C 120 30, 160 8, 300 8 S 480 30, 600 22"/>
@@ -62,9 +63,11 @@
           <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Família brincando na sala de casa" width="950" height="717" fetchpriority="high">
         </picture>
         <div class="oferta" id="oferta">
-          <div class="oferta-topo"><p class="oferta-nome" id="oferta-nome">Internet 350 Mega</p><span class="selo" id="oferta-selo" hidden>Mais escolhido</span></div>
-          <p class="preco"><span class="rs">R$</span><span class="int" id="oferta-int">79</span><span class="cent" id="oferta-cent">,99</span><span class="mes">por mês</span></p>
+          <div class="oferta-topo"><p class="oferta-nome" id="oferta-nome">Internet 800 Mega</p><span class="selo" id="oferta-selo" hidden>Mais escolhido</span></div>
+          <p class="preco-de" id="oferta-de" hidden></p>
+          <p class="preco"><span class="rs">R$</span><span class="int" id="oferta-int">89</span><span class="cent" id="oferta-cent">,90</span><span class="mes">por mês</span></p>
           <p class="oferta-obs" id="oferta-obs"></p>
+          <div id="oferta-apps"></div>
           <ul class="oferta-itens" id="oferta-itens"></ul>
           <div class="oferta-acoes">
             <a class="btn btn-principal js-quero" id="oferta-quero" href="#cadastro">Quero este plano</a>
@@ -103,7 +106,7 @@
   <section class="secao secao-tinta" id="empresas" aria-labelledby="empresas-titulo">
     <div class="cabeca">
       <h2 id="empresas-titulo">Planos para empresas</h2>
-      <p>Conexão estável para vender, atender e emitir nota sem travar. Com opção de telefone fixo para a empresa.</p>
+      <p>Conexão estável para vender, atender e emitir nota sem travar. Com opção de chip 5G com ligações ilimitadas para a empresa.</p>
     </div>
     <div class="grade-planos" data-categoria="empresarial"></div>
     <p class="nota-centro"><a class="link-claro js-wa" data-msg="Olá! Tenho uma empresa e quero falar sobre outro plano empresarial." href="#cadastro">Precisa de outro plano para a empresa? Fale com o consultor</a></p>
@@ -116,10 +119,12 @@
         <img src="assets/img/chip-420.webp" alt="Mulher sorrindo com o celular na mão" width="640" height="607" loading="lazy" decoding="async">
       </picture>
       <div class="chip-texto">
-        <h2 id="chip-titulo">Brisa Chip 5G</h2>
+        <h2 id="chip-titulo">Brisamóvel 5G</h2>
         <p class="chip-gb"><span id="chip-gb">100 GB</span> de internet no celular</p>
+        <p class="preco-de" id="chip-de" hidden></p>
         <p class="preco preco-escuro"><span class="rs">R$</span><span class="int" id="chip-int">49</span><span class="cent" id="chip-cent">,99</span><span class="mes">por mês</span></p>
         <p id="chip-obs" class="chip-obs"></p>
+        <div id="chip-apps"></div>
         <div class="oferta-acoes">
           <a class="btn btn-principal js-quero" id="chip-quero" href="#cadastro">Quero o chip</a>
           <a class="btn btn-wa js-wa" id="chip-wa" href="#cadastro"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-wa"/></svg>WhatsApp</a>
@@ -139,7 +144,7 @@
           <div><dt>cidades atendidas</dt><dd>150</dd></div>
           <div><dt>anos no Nordeste</dt><dd>+20</dd></div>
         </dl>
-        <p class="nota">Assinantes têm acesso a apps de conteúdo como AYA, Skeelo, Reforça, Taplingo e Brisamusic, conforme o plano.</p>
+        <p class="nota">Conforme o plano, o assinante ganha apps como Skeelo, Reforça e Aya Audio Book, e os planos com chip 5G usam WhatsApp, Facebook e Waze sem gastar a internet do chip. A lista de cada plano aparece no botão + ao lado dos ícones.</p>
       </div>
     </div>
   </section>
@@ -282,6 +287,19 @@
   <a class="btn btn-wa js-wa" data-msg="Olá! Vim pelo site de ofertas e quero contratar internet fibra." href="#cadastro" tabindex="-1" aria-label="WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
 
+<dialog class="modal" id="modal-apps" aria-labelledby="modal-apps-tit">
+  <div class="modal-caixa">
+    <div class="modal-topo">
+      <div>
+        <h2 id="modal-apps-tit">Produtos inclusos</h2>
+        <p class="modal-plano" id="modal-apps-plano"></p>
+      </div>
+      <button type="button" class="modal-fechar" aria-label="Fechar"><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="modal-corpo"><ul class="modal-lista" id="modal-apps-lista"></ul></div>
+  </div>
+</dialog>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.16-1.5A9.93 9.93 0 1 0 12.04 2Zm0 18.1a8.17 8.17 0 0 1-4.17-1.14l-.3-.18-3.06.89.9-2.98-.2-.31a8.2 8.2 0 1 1 6.83 3.72Zm4.5-6.13c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.55.12-.17.25-.64.8-.78.97-.15.16-.29.18-.54.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.85 2.03 4.76 4.76 0 0 0 1 2.53 10.9 10.9 0 0 0 4.17 3.68c1.55.67 2.16.73 2.94.61.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.15-1.17-.06-.1-.22-.17-.47-.29Z"/></symbol>
   <symbol id="i-casa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></symbol>
@@ -291,6 +309,6 @@
   <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.5 3 3 6-6.5"/></symbol>
 </svg>
 <noscript><p class="sem-js">Ative o JavaScript para ver os preços, ou chame no WhatsApp pelo número do anúncio.</p></noscript>
-<script src="assets/app.js?v=1" defer></script>
+<script src="assets/app.js?v=2" defer></script>
 </body>
 </html>

@@ -1,0 +1,5 @@
+Ícones dos apps inclusos nos planos
+
+whatsapp.svg, facebook.svg e waze.svg usam os desenhos do projeto Simple Icons (https://simpleicons.org), versão 16.33.0, publicados sob a licença CC0 1.0 (domínio público). As marcas WhatsApp, Facebook e Waze pertencem aos seus donos e aparecem aqui só para indicar os apps inclusos nos planos.
+
+Os demais ícones (aya-audiobook, aya-ensinah, reforca, skeelo, prime-video, qualifica, taplingo) são pictogramas genéricos desenhados para este site.

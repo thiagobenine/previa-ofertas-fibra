@@ -3,169 +3,313 @@
     "operadora": "Brisanet",
     "whatsapp": "",
     "consultor": "Bruno",
-    "atualizado_em": "2026-10-27"
+    "atualizado_em": "2026-10-28",
+    "precos_origem": "site oficial da Brisanet em 27/10/2026, região de Juazeiro do Norte (CE)"
+  },
+  "apps": {
+    "whatsapp": {
+      "nome": "WhatsApp",
+      "icone": "assets/img/apps/whatsapp.svg",
+      "texto": "Converse por mensagem, áudio e chamada de vídeo sem gastar a internet do chip."
+    },
+    "facebook": {
+      "nome": "Facebook",
+      "icone": "assets/img/apps/facebook.svg",
+      "texto": "Veja o feed, publique fotos e fale com os amigos sem gastar a internet do chip."
+    },
+    "waze": {
+      "nome": "Waze",
+      "icone": "assets/img/apps/waze.svg",
+      "texto": "GPS com trânsito ao vivo e a rota mais rápida, sem gastar a internet do chip."
+    },
+    "aya-audiobook": {
+      "nome": "Aya Audio Book",
+      "icone": "assets/img/apps/aya-audiobook.svg",
+      "texto": "Audiolivros para ouvir no carro, no trabalho ou antes de dormir."
+    },
+    "aya-ensinah": {
+      "nome": "Aya Ensinah",
+      "icone": "assets/img/apps/aya-ensinah.svg",
+      "texto": "Conteúdos de estudo para aprender no seu ritmo, direto no celular."
+    },
+    "reforca": {
+      "nome": "Reforça",
+      "icone": "assets/img/apps/reforca.svg",
+      "texto": "Aulas e exercícios de reforço escolar nas matérias do ensino brasileiro."
+    },
+    "skeelo": {
+      "nome": "Skeelo",
+      "icone": "assets/img/apps/skeelo.svg",
+      "texto": "Todo mês um livro digital novo para ler no celular, entre os títulos mais procurados."
+    },
+    "prime-video": {
+      "nome": "Prime Video",
+      "icone": "assets/img/apps/prime-video.svg",
+      "texto": "Filmes, séries e produções originais da Amazon, no plano padrão com anúncios."
+    },
+    "qualifica": {
+      "nome": "Qualifica",
+      "icone": "assets/img/apps/qualifica.svg",
+      "texto": "Cursos rápidos em formato de jogo para crescer na carreira."
+    },
+    "taplingo": {
+      "nome": "TapLingo",
+      "icone": "assets/img/apps/taplingo.svg",
+      "texto": "Lições curtas para praticar outros idiomas no celular."
+    }
   },
   "residencial": [
     {
-      "nome": "Internet 350 Mega",
-      "velocidade": "350 Mega",
-      "preco": "79,99",
-      "observacao": "Valor fixo durante 3 meses",
+      "nome": "Internet 500 Mega",
+      "velocidade": "500 Mega",
+      "preco": "79,90",
+      "preco_de": "89,90",
+      "observacao": "Oferta de Black Friday",
+      "destaque": false,
+      "itens": [
+        "Instalação grátis",
+        "100% fibra óptica",
+        "Wi-Fi de alta performance",
+        "Download 500 Mbps e upload 250 Mbps"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
+      ]
+    },
+    {
+      "nome": "Internet 800 Mega",
+      "velocidade": "800 Mega",
+      "preco": "89,90",
+      "preco_de": "99,90",
+      "observacao": "Oferta de Black Friday. A partir do 25º mês, R$ 99,90",
       "destaque": true,
       "itens": [
         "Instalação inclusa",
         "100% fibra óptica",
         "Wi-Fi de alta performance",
-        "Download 350 Mbps e upload 175 Mbps",
-        "Atendimento técnico rápido",
-        "Jogos online e streaming em 4K"
-      ]
-    },
-    {
-      "nome": "Internet 500 Mega",
-      "velocidade": "500 Mega",
-      "preco": "84,99",
-      "observacao": "",
-      "destaque": false,
-      "itens": [
-        "Instalação inclusa",
-        "100% fibra óptica",
-        "Wi-Fi de alta performance",
-        "Download 500 Mbps e upload 250 Mbps",
-        "Atendimento técnico rápido",
-        "Estável com vários aparelhos conectados"
+        "Download 800 Mbps e upload 400 Mbps"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
       ]
     },
     {
       "nome": "Internet 700 Mega",
       "velocidade": "700 Mega",
-      "preco": "99,99",
-      "observacao": "Valor fixo por 12 meses",
-      "destaque": false,
-      "itens": [
-        "Instalação inclusa",
-        "100% fibra óptica",
-        "Super Oferta Brisanet",
-        "Wi-Fi de alta performance",
-        "Download 700 Mbps e upload 350 Mbps",
-        "Estável com vários aparelhos conectados"
-      ]
-    },
-    {
-      "nome": "Internet 1 Giga",
-      "velocidade": "1 Giga",
-      "preco": "149,99",
-      "observacao": "",
+      "preco": "99,90",
+      "preco_de": "109,90",
+      "observacao": "A partir do 13º mês, R$ 109,90",
       "destaque": false,
       "itens": [
         "Instalação inclusa",
         "100% fibra óptica",
         "Wi-Fi de alta performance",
-        "Download 1 Gbps e upload 500 Mbps",
-        "Atendimento técnico rápido",
-        "Estável com vários aparelhos conectados"
+        "Download 700 Mbps e upload 350 Mbps"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
       ]
     }
   ],
   "combos": [
     {
-      "nome": "500 Mega + Móvel 5G",
-      "velocidade": "500 Mega",
-      "preco": "89,90",
-      "observacao": "Chip 5G no plano individual",
+      "nome": "Internet 600 Mega + Chip 5G 40 GB",
+      "velocidade": "600 Mega",
+      "preco": "99,90",
+      "preco_de": "119,89",
+      "observacao": "Oferta de Black Friday",
       "destaque": true,
       "itens": [
-        "20 GB de internet móvel 5G",
-        "Ligações e SMS ilimitados",
-        "Instalação inclusa",
-        "100% fibra óptica",
-        "Download 500 Mbps e upload 250 Mbps"
+        "Chip 5G com 40 GB, ligações e SMS ilimitados",
+        "Apps de conversa, rede social e GPS sem gastar a internet do chip",
+        "Download 600 Mbps e upload 300 Mbps",
+        "Instalação grátis e Wi-Fi de alta performance"
+      ],
+      "apps": [
+        "whatsapp",
+        "facebook",
+        "waze",
+        "aya-audiobook",
+        "reforca",
+        "skeelo"
       ]
     },
     {
-      "nome": "700 Mega + Móvel 5G",
+      "nome": "Internet 700 Mega + Chip 5G 70 GB",
       "velocidade": "700 Mega",
-      "preco": "99,90",
-      "observacao": "Chip 5G no plano individual",
+      "preco": "119,89",
+      "preco_de": "129,89",
+      "observacao": "Oferta de Black Friday",
       "destaque": false,
       "itens": [
-        "20 GB de internet móvel 5G",
-        "Ligações e SMS ilimitados",
-        "Instalação inclusa",
-        "100% fibra óptica",
-        "Download 700 Mbps e upload 350 Mbps"
+        "Chip 5G com 70 GB, ligações e SMS ilimitados",
+        "Apps de conversa, rede social e GPS sem gastar a internet do chip",
+        "Download 700 Mbps e upload 350 Mbps",
+        "Instalação inclusa e Wi-Fi de alta performance"
+      ],
+      "apps": [
+        "whatsapp",
+        "facebook",
+        "waze",
+        "aya-audiobook",
+        "reforca",
+        "skeelo"
       ]
     },
     {
-      "nome": "500 Mega + Netflix",
+      "nome": "Internet 500 Mega + SKY+ e Prime Video",
       "velocidade": "500 Mega",
-      "preco": "105,90",
-      "observacao": "Netflix padrão com anúncios",
+      "preco": "101,80",
+      "preco_de": "119,89",
+      "observacao": "Prime Video no plano padrão com anúncios",
       "destaque": false,
       "itens": [
-        "Netflix incluída",
-        "Instalação inclusa",
+        "SKY+ com TV ao vivo e streaming no mesmo lugar",
+        "Download 500 Mbps e upload 250 Mbps",
+        "Instalação grátis",
+        "100% fibra óptica"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo",
+        "prime-video"
+      ]
+    },
+    {
+      "nome": "Internet 500 Mega + Netflix",
+      "velocidade": "500 Mega",
+      "preco": "108,80",
+      "preco_de": "115,80",
+      "observacao": "Oferta de Black Friday. Netflix Padrão com anúncios",
+      "destaque": false,
+      "itens": [
+        "Netflix em 2 telas ao mesmo tempo, em Full HD",
+        "Instalação grátis",
         "100% fibra óptica",
-        "Wi-Fi de alta performance",
-        "Download 500 Mbps e upload 250 Mbps"
+        "Wi-Fi de alta performance"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
+      ]
+    },
+    {
+      "nome": "Internet 500 Mega + HBO Max",
+      "velocidade": "500 Mega",
+      "preco": "114,80",
+      "preco_de": "124,80",
+      "observacao": "HBO Max Básico com anúncios. A partir do 13º mês, R$ 124,80",
+      "destaque": false,
+      "itens": [
+        "HBO Max em 2 aparelhos ao mesmo tempo, em Full HD",
+        "5 perfis e até 30 downloads para ver sem internet",
+        "Download 500 Mbps e upload 250 Mbps",
+        "Instalação grátis"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
+      ]
+    },
+    {
+      "nome": "Internet 500 Mega + Globoplay Premium",
+      "velocidade": "500 Mega",
+      "preco": "107,80",
+      "preco_de": "117,80",
+      "observacao": "Oferta de Black Friday",
+      "destaque": false,
+      "itens": [
+        "Globoplay Premium com novelas, séries, filmes e esportes",
+        "Download 500 Mbps e upload 250 Mbps",
+        "Instalação grátis",
+        "100% fibra óptica"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
       ]
     }
   ],
   "empresarial": [
     {
-      "nome": "Empresa 350 Mega",
-      "velocidade": "350 Mega",
-      "preco": "89,99",
-      "observacao": "",
+      "nome": "Empresa 700 Mega",
+      "velocidade": "700 Mega",
+      "preco": "129,99",
+      "observacao": "Instalação inclusa",
       "destaque": false,
       "itens": [
-        "Instalação inclusa",
+        "Download 700 Mbps e upload 350 Mbps",
         "100% fibra óptica",
         "Wi-Fi de alta performance",
-        "Download 350 Mbps e upload 175 Mbps",
         "Atendimento técnico rápido"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo"
       ]
     },
     {
-      "nome": "Empresa 500 Mega + BrisaFixo",
-      "velocidade": "500 Mega",
-      "preco": "99,99",
-      "observacao": "Com telefone fixo para a empresa",
+      "nome": "Empresa 700 Mega + Chip 5G 30 GB",
+      "velocidade": "700 Mega",
+      "preco": "129,99",
+      "preco_de": "169,99",
+      "observacao": "A partir do 24º mês, R$ 169,99",
       "destaque": true,
       "itens": [
-        "Telefone fixo para a sua empresa",
+        "Chip 5G com 30 GB, ligações e SMS ilimitados",
+        "Download 700 Mbps e upload 350 Mbps",
         "Instalação inclusa",
-        "100% fibra óptica",
-        "Download 500 Mbps e upload 250 Mbps",
-        "Atendimento técnico rápido"
+        "Wi-Fi de alta performance"
+      ],
+      "apps": [
+        "facebook",
+        "waze",
+        "aya-audiobook",
+        "reforca",
+        "skeelo"
       ]
     },
     {
       "nome": "Empresa 1 Giga",
       "velocidade": "1 Giga",
-      "preco": "159,99",
-      "observacao": "",
+      "preco": "169,99",
+      "observacao": "Instalação grátis",
       "destaque": false,
       "itens": [
-        "Instalação inclusa",
+        "Download 1 Gbps e upload 500 Mbps",
         "100% fibra óptica",
         "Wi-Fi de alta performance",
-        "Download 1 Gbps e upload 500 Mbps",
         "Atendimento técnico rápido"
+      ],
+      "apps": [
+        "reforca",
+        "skeelo",
+        "qualifica"
       ]
     }
   ],
   "celular": [
     {
-      "nome": "Brisa Chip 5G",
+      "nome": "Brisamóvel 5G",
       "velocidade": "100 GB",
       "preco": "49,99",
-      "observacao": "Internet no celular",
+      "preco_de": "59,99",
+      "observacao": "Trazendo o seu número, ganha mais 50 GB. A partir do 13º mês, R$ 59,99",
       "destaque": false,
       "itens": [
-        "100 GB de internet no celular",
-        "Chip 5G Brisanet",
-        "Atendimento personalizado"
+        "100 GB de internet 5G",
+        "Ligações e SMS ilimitados",
+        "Apps de conversa e GPS sem gastar a internet"
+      ],
+      "apps": [
+        "whatsapp",
+        "facebook",
+        "waze",
+        "aya-audiobook",
+        "aya-ensinah"
       ]
     }
   ]

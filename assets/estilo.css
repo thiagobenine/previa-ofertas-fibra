@@ -57,7 +57,7 @@ button,input,select{font:inherit;color:inherit}
 .hero-in{max-width:var(--largura);margin:0 auto;display:grid;gap:22px}
 .hero h1{font-size:clamp(1.9rem,1.2rem + 3.2vw,3.3rem);font-weight:800;font-stretch:76%;letter-spacing:-.01em;max-width:17ch}
 .hero-sub{color:#c6cee0;margin:16px 0 10px;font-size:1rem}
-.seletor{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:rgba(255,255,255,.07);padding:4px;border-radius:14px;max-width:460px}
+.seletor{display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:4px;background:rgba(255,255,255,.07);padding:4px;border-radius:14px;max-width:460px}
 .seletor button{background:transparent;color:#fff;border:0;border-radius:10px;padding:9px 2px 8px;cursor:pointer;font-weight:800;font-stretch:80%;font-size:1.3rem;line-height:1}
 .seletor button small{display:block;font-size:.74rem;font-weight:600;font-stretch:100%;color:#a9b3ca;margin-top:3px}
 .seletor button[aria-checked="true"]{background:#fff;color:var(--tinta)}
@@ -90,6 +90,47 @@ button,input,select{font:inherit;color:inherit}
 .preco .int{font-size:4rem;letter-spacing:-.02em}
 .preco .cent{font-size:1.7rem;margin-top:.32rem}
 .preco .mes{align-self:flex-end;margin:0 0 .5rem .45rem;font-size:.95rem;font-weight:500;font-stretch:100%;color:var(--suave)}
+
+/* preço "de/por" */
+.preco-de{margin-top:10px;font-size:.95rem;font-weight:600;color:var(--suave);line-height:1.2}
+.preco-de s{text-decoration-thickness:1.5px}
+.preco-de+.preco,.plano .preco-de+.preco{margin-top:2px}
+.plano .preco-de{margin-top:14px}
+
+/* produtos inclusos (ícones dos apps) */
+.apps{margin-top:12px}
+.apps-tit{font-size:.82rem;font-weight:700;color:var(--suave)}
+.apps-btn{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-height:44px;margin:4px 0 0 -4px;padding:4px;background:none;border:0;border-radius:999px;cursor:pointer}
+.apps-btn img{width:30px;height:30px;flex:none;border-radius:50%;box-shadow:0 0 0 1px rgba(20,33,61,.12)}
+.apps-mais{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 7px;border:1.5px solid var(--laranja-botao);border-radius:999px;color:var(--laranja-botao);font-weight:800;font-size:1.05rem;line-height:1;transition:background-color .15s,color .15s}
+.apps-btn:hover .apps-mais{background:var(--laranja-botao);color:#fff}
+
+/* janela "Produtos inclusos" */
+.modal{width:min(440px,calc(100% - 32px));max-height:min(85vh,640px);padding:0;border:0;border-radius:18px;background:#fff;color:var(--tinta);box-shadow:0 30px 60px -20px rgba(0,0,0,.55);overflow:hidden}
+.modal[open]{display:flex;flex-direction:column}
+.modal::backdrop{background:rgba(10,18,36,.62)}
+.modal-caixa{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+.modal-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:20px 20px 14px;border-bottom:1px solid var(--linha)}
+.modal-topo h2{font-size:1.55rem;font-weight:800;font-stretch:80%}
+.modal-plano{margin-top:4px;color:var(--suave);font-size:.93rem;line-height:1.3}
+.modal-fechar{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-8px -8px 0 0;border:0;border-radius:50%;background:var(--nevoa);color:var(--tinta);cursor:pointer}
+.modal-fechar:hover{background:var(--linha)}
+.modal-fechar svg{width:22px;height:22px}
+.modal-corpo{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:2px 20px 10px}
+.modal-lista{list-style:none;margin:0;padding:0}
+.modal-lista li{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--linha)}
+.modal-lista li:last-child{border-bottom:0}
+.modal-lista img{width:44px;height:44px;flex:none;border-radius:50%;box-shadow:0 0 0 1px rgba(20,33,61,.12)}
+.modal-lista b{display:block;font-size:1.02rem;line-height:1.25}
+.modal-lista p{margin-top:3px;color:var(--suave);font-size:.93rem;line-height:1.4}
+.modal[open]{animation:surge .18s ease-out}
+@keyframes surge{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.modal[open]{animation:none}}
+html:has(.modal[open]){overflow:hidden}
+
+/* aviso da prévia */
+.aviso-previa{background:var(--amarelo);color:var(--tinta);font-size:.9rem;font-weight:600;line-height:1.35}
+.aviso-previa p{max-width:var(--largura);margin:0 auto;padding:8px 16px}
 
 .itens{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px;font-size:.97rem}
 .itens li{position:relative;padding-left:26px}
@@ -269,6 +310,7 @@ button,input,select{font:inherit;color:inherit}
   .secao{padding:80px 24px}
   .grade-planos[data-n="3"]{grid-template-columns:repeat(3,1fr)}
   .grade-planos[data-n="4"]{grid-template-columns:repeat(4,1fr)}
+  .grade-planos[data-n="5"],.grade-planos[data-n="6"]{grid-template-columns:repeat(3,1fr)}
   .porque-in{grid-template-columns:440px 1fr;gap:56px}
   .cidades-in{grid-template-columns:1fr 340px;gap:56px}
   .mapa{max-width:340px}
